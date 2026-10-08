@@ -1,0 +1,381 @@
+/* ==========================================================
+   Kemétro : feuille de style de la maquette
+   Polices : Barlow (texte) et Barlow Condensed (titres, chiffres)
+   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+   ========================================================== */
+
+/* ---------- 1. Variables ---------- */
+:root {
+  /* Couleurs de marque */
+  --accent: #4B3FD0;          /* indigo : trajet, actions */
+  --accent-soft: #EEEDFB;
+  --accent-line: #C9C5F2;
+  --accent-mid: #8E85E6;
+  --alert: #C8102E;           /* rouge : alertes, ruptures */
+  --alert-soft: #FBE9EC;
+
+  /* Neutres */
+  --ink: #14202B;
+  --muted: #566472;
+  --muted-light: #93A1AD;
+  --line: #D9DFE5;
+  --line-soft: #ECEFF2;
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --track: #E1E6EB;
+
+  /* Lignes du métro */
+  --ligne-verte: #00873F;
+  --ligne-orange: #F28C00;
+  --ligne-jaune: #FFD400;
+  --ligne-bleue: #0A6FB8;
+
+  /* Mode nuit */
+  --night-bg: #0E1318;
+  --night-card: #151C23;
+  --night-line: #27313A;
+  --night-text: #E8EDF1;
+  --night-accent: #A79DFF;
+
+  /* Typographie */
+  --font-text: 'Barlow', system-ui, sans-serif;
+  --font-title: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+
+  /* Formes */
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --radius-btn: 12px;
+  --tabbar-h: 84px;
+}
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+.screen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 15px;
+  line-height: 1.35;
+}
+.screen--night { background: var(--night-bg); color: var(--night-text); }
+
+/* ---------- 3. Typographie ---------- */
+.title-xl {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+}
+.title-lg { font-family: var(--font-title); font-weight: 700; font-size: 34px; line-height: 1; }
+.number-xl { font-family: var(--font-title); font-weight: 700; font-size: 52px; line-height: 1; }
+.number-md { font-family: var(--font-title); font-weight: 700; font-size: 28px; line-height: 1; }
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.caption { font-size: 12.5px; color: var(--muted); }
+
+/* ---------- 4. En-tête d'écran ---------- */
+.screen-header {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 58px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.screen-content { position: absolute; left: 16px; right: 16px; top: 164px; }
+
+.back-btn {
+  width: 44px;
+  height: 44px;
+  margin-left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- 5. Barre d'onglets ---------- */
+.tabbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--tabbar-h);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 8px 4px 0;
+}
+.tab {
+  width: 68px;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.tab--active { color: var(--accent); }
+.tab-fab {
+  width: 48px;
+  height: 48px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 3px 10px rgba(75, 63, 208, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- 6. Cartes ---------- */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 14px;
+}
+.card--alert { background: var(--alert-soft); border: 1.5px solid var(--alert); padding: 12px 14px; }
+.card--info  { background: var(--accent-soft); border: 1.5px solid var(--accent); }
+.card--user  { background: var(--surface); border: 1.5px dashed var(--muted); padding: 12px 14px; }
+.card-row { display: flex; gap: 12px; align-items: flex-start; }
+.card-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.card-title { font-weight: 600; font-size: 16px; line-height: 1.2; }
+
+/* ---------- 7. Pastilles de confiance ---------- */
+.pill {
+  display: inline-block;
+  align-self: flex-start;
+  border-radius: var(--radius-pill);
+  padding: 1px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.pill--user      { border: 1px dashed var(--muted); color: var(--muted); }   /* signalé par un usager */
+.pill--confirmed { border: 1px solid var(--ink); }                           /* confirmé par N usagers */
+.pill--official  { background: var(--ink); color: #fff; }                    /* avis officiel */
+
+/* ---------- 8. Boutons ---------- */
+.btn {
+  height: 52px;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid var(--ink);
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn--primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn--dark    { background: var(--ink); color: #fff; }
+.btn--small   { height: 42px; border-radius: 10px; flex: 1; }
+.btn-row { display: flex; gap: 10px; }
+.btn-row .btn { flex: 1; }
+
+/* ---------- 9. Filtres (chips) ---------- */
+.chips { display: flex; gap: 8px; overflow: hidden; }
+.chip {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 14px;
+  font-weight: 600;
+}
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* ---------- 10. Interrupteur ---------- */
+.switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 32px;
+  border: 0;
+  padding: 0;
+  border-radius: 16px;
+  background: var(--line);
+}
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform .2s;
+}
+.switch[aria-checked="true"] { background: var(--accent); }
+.switch[aria-checked="true"]::after { transform: translateX(20px); }
+
+/* ---------- 11. Contrôle segmenté (Aujourd'hui / Demain) ---------- */
+.segmented {
+  height: 44px;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--track);
+}
+.segmented button {
+  flex: 1;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  font-weight: 600;
+  font-size: 15px;
+}
+.segmented button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+
+/* ---------- 12. Feuille « Signaler un problème » ---------- */
+.sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--surface);
+  border-radius: 24px 24px 0 0;
+  padding: 16px 16px 24px;
+}
+.sheet-handle { width: 36px; height: 4px; margin: 0 auto 12px; border-radius: 2px; background: var(--line); }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tile {
+  min-height: 84px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  text-align: left;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+.tile[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+
+/* Message de confirmation (toast) */
+.toast {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 24px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- 13. Notification (écran verrouillé) ---------- */
+.notif {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 340px;
+  display: block;
+  padding: 14px;
+  border-radius: 22px;
+  background: var(--bg);
+  color: var(--ink);
+}
+.notif-app { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lock-time { font-family: var(--font-title); font-weight: 600; font-size: 118px; line-height: 1; letter-spacing: 0.01em; }
+
+/* ---------- 14. Rupture de service ---------- */
+.banner-alert {
+  height: 150px;
+  padding: 56px 16px 0;
+  background: var(--alert);
+  color: #fff;
+}
+.segment { position: absolute; height: 8px; border-radius: 4px; background: var(--ligne-orange); }
+.segment--cut { height: 0; border-top: 5px dashed var(--alert); background: none; }
+.stop { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 3px solid var(--ink); }
+.stop--here {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* ---------- 15. Pastilles de ligne ---------- */
+.line-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+.line-badge--1 { background: var(--ligne-verte); }
+.line-badge--2 { background: var(--ligne-orange); }
+.line-badge--4 { background: var(--ligne-jaune); color: var(--ink); }
+.line-badge--5 { background: var(--ligne-bleue); }
+
+/* ---------- 16. Graphique de fiabilité et d'affluence ---------- */
+.bars { display: flex; align-items: flex-end; gap: 4px; height: 112px; }
+.bar { flex: 1; min-width: 0; border-radius: 3px 3px 0 0; background: var(--line); }
+.bar--low  { background: var(--accent-line); }
+.bar--mid  { background: var(--accent-mid); }
+.bar--high { background: var(--accent); }
+.bar--bad  { background: var(--alert); }
+
+/* ---------- 17. Mode nuit ---------- */
+.night-card {
+  background: var(--night-card);
+  border: 1px solid var(--night-line);
+  border-radius: 20px;
+  padding: 16px 18px 18px;
+}
+.night-eyebrow { color: var(--night-accent); }
+.night-pill {
+  display: inline-block;
+  padding: 3px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--night-accent);
+  color: var(--night-bg);
+  font-weight: 600;
+}
+.night-link {
+  height: 52px;
+  border-radius: 12px;
+  border: 1.5px solid var(--night-text);
+  font-weight: 600;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- 18. Accessibilité ---------- */
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
